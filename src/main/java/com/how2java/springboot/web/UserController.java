@@ -11,8 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+/*使用@Controller 注解，在对应的方法上，视图解析器可以解析return 的jsp,html页面，
+并且跳转到相应页面 若返回json等内容到页面，则需要加@ResponseBody注解
+@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
+@RestController不能返回页面
+*/
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
