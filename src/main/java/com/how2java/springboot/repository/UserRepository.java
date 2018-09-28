@@ -12,14 +12,17 @@ import javax.transaction.Transactional;
 /**
  * Created by Administrator on 2018/9/4 0004.
  */
+//有时候一个类中可能会有多个缓存操作，而这些缓存操作可能是重复的。这个时候可以使用@CacheConfig
+    //@CacheConfig是一个类级别的注解，允许共享缓存的名称、KeyGenerator、CacheManager 和CacheResolver
 @CacheConfig(cacheNames = "user")
 public interface UserRepository extends PagingAndSortingRepository<User,Integer> {
+    //@Cacheable是用来声明方法是可缓存的。
+    // 将结果存储到缓存中以便后续使用相同参数调用时不需执行实际的方法。直接从缓存中取值。最简单的格式需要制定缓存名称。
     @Cacheable(key = "#p0")
     User findById(int id);
-//    在findById方法时加了个@Cacheable（key= "#p0")，#p0代表第一个参数，也就是id。
-//    这句话加上之后，当你在调用findById时，就会先从redis的post缓存对象里去查询key等于传过来的id的值。如果没有，就去查表。
     /**
-     * 新增或修改时
+     * 新增或修改时，如果缓存需要更新，且不干扰方法的执行,可以使用注解@CachePut。@CachePut标注的方法在执行
+     * 前不会去检查缓存中是否存在之前执行过的结果，而是每次都会执行该方法，并将执行结果以键值对的形式存入指定的缓存中。
      */
     @CachePut(key = "#p0.id")
     User save(User user);
