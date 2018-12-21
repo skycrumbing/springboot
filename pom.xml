@@ -84,7 +84,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-
     </dependencies>
 
     <properties>
@@ -92,5 +91,14 @@
     </properties>
 
 
+    <build>
+        <defaultGoal>compile</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
