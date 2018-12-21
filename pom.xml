@@ -8,7 +8,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>springboot</name>
   <description>springboot</description>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   
   
     <parent>
@@ -77,20 +77,6 @@
             <version>1.0.18</version>
         </dependency>
 
-        <!-- quartz集群定时任务 -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz-jobs</artifactId>
-        </dependency>
-        <!-- 该依赖必加，里面有sping对schedule的支持 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
 
         <!-- 使用Lombok可以减少很多重复代码的书写。比如说getter/setter/toString等方法的编写 -->
         <dependency>
